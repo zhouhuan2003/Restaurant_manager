@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.restkeeper.store.mapper.SetMealDishMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.restkeeper.store.entity.SetMealDish">
+        <id column="id" property="id" />
+        <result column="setmeal_id" property="setMealId" />
+        <result column="dish_id" property="dishId" />
+        <result column="dish_name" property="dishName" />
+        <result column="dish_price" property="dishPrice" />
+        <result column="dish_copies" property="dishCopies" />
+        <result column="store_id" property="storeId" />
+        <result column="shop_id" property="shopId" />
+        <result column="last_update_time" property="lastUpdateTime" />
+        <collection property="image" column="dish_id"
+                        select="com.restkeeper.store.mapper.DishMapper.getImageById">
+        </collection>
+    </resultMap>
+
+</mapper>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.restkeeper.store.mapper.DishMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.restkeeper.store.entity.Dish">
+        <id column="dish_id" property="id" />
+		<result column="dish_name" property="name" />
+        <result column="category_id" property="categoryId" />
+        <result column="price" property="price" />
+        <result column="image" property="image" />
+        <result column="description" property="description" />
+        <result column="description" property="description" />
+        <result column="status" property="status" />
+        <result column="last_update_time" property="lastUpdateTime" />
+        <result column="store_id" property="storeId" />
+        <result column="shop_id" property="shopId" />
+        <association property="dishCategory" column="category_id"
+                     select="com.restkeeper.store.mapper.DishCategoryMapper.selectById">
+        </association>
+        <collection property="flavorList" column="dish_id"
+                    select="com.restkeeper.store.mapper.DishFlavorMapper.selectFlavors">
+        </collection>
+    </resultMap>
+
+    <resultMap id="findDishCategoryMap" type="com.restkeeper.store.entity.Dish">
+        <id column="dish_id" property="id"></id>
+        <result column="dish_name" property="name"></result>
+        <result column="category_id" property="categoryId"></result>
+        <result column="price" property="price"></result>
+        <result column="code" property="code"></result>
+        <result column="image" property="image"></result>
+        <result column="description" property="description"></result>
+        <result column="status" property="status"></result>
+        <result column="d_last_update_time" property="lastUpdateTime"></result>
+        <result column="is_deleted" property="isDeleted"></result>
+        <result column="store_id" property="storeId"></result>
+        <result column="shop_id" property="shopId"></result>
+        <association property="dishCategory" javaType="com.restkeeper.store.entity.DishCategory">
+            <id column="category_id" property="categoryId"></id>
+            <result column="type" property="type"></result>
+            <result column="name" property="name"></result>
+            <result column="t_order" property="torder"></result>
+            <result column="c_last_update_time" property="lastUpdateTime"></result>
+            <result column="c_is_deleted" property="isDeleted"></result>
+            <result column="store_id" property="storeId"></result>
+            <result column="shop_id" property="shopId"></result>
+        </association>
+    </resultMap>
+
+    <select id="findDishCategoryByDishId" resultMap="findDishCategoryMap">
+        SELECT
+            dish_id,
+            dish_name,
+            d.category_id as category_id,
+            price,
+            code,
+            image,
+            description,
+            status,
+            d.last_update_time as d_last_update_time,
+            d.is_deleted,
+            d.store_id,
+            d.shop_id,
+            type,
+            name,
+            t_order,
+            c.last_update_time as c_last_update_time,
+            c.is_deleted as c_is_deleted
+        FROM
+            t_dish d,
+            t_category c
+        WHERE
+            d.category_id = c.category_id
+          AND d.dish_id = #{id}
+    </select>
+    <select id="getImageById" resultType="java.lang.String">
+        select image from t_dish where dish_id=#{id}
+    </select>
+
+
+</mapper>

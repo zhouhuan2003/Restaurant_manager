@@ -1,0 +1,56 @@
+{
+	"pages": [ {
+		"path": "pages/home/home",
+		"style": {
+			// "navigationStyle": "custom",
+			// "navigationBarTitleText": "",
+			"enablePullDownRefresh": false
+		}
+
+	}    ,{
+            "path" : "pages/order/order",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "订单详情",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+	"subPackages": [
+		{
+			"root": "subpkg",
+			"pages": [
+				
+			]
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "欢掌柜",
+		"navigationBarBackgroundColor": "#ff5500",
+		"backgroundColor": "#FFFFFF",
+		"app-plus": {
+			"background": "#efeff4"
+		},
+		"usingComponents": {
+			"van-dialog": "/wxcomponents/vant/dialog/index",
+			"van-icon": "/wxcomponents/vant/icon/index"
+		}
+	}
+	// "tabBar": {
+	// 	"list": [{
+	// 			"pagePath": "pages/home/home",
+	// 			"text": "下单",
+	// 			"iconPath": "static/tab_icons/xiadan.png",
+	// 			"selectedIconPath": "static/tab_icons/xiadan-active.png"
+	// 		},
+	// 		{
+	// 			"pagePath": "pages/my/my",
+	// 			"text": "我的",
+	// 			"iconPath": "static/tab_icons/wode.png",
+	// 			"selectedIconPath": "static/tab_icons/wode-active.png"
+	// 		}
+	// 	]
+	// }
+}

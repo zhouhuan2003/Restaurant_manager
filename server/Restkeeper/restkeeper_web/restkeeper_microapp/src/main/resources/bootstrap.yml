@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: micro-app
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.150.135:8848
+      config:
+        server-addr: 192.168.150.135:8848
+        file-extension: yml
+        sharedDataids: common.yml
+        refreshable-dataids: common.yml
+server:
+  port: 8086
+
+wx:
+  appId: wx9b2b1e421645d190
+  secret: 5e3378d2db904fce9d1c936609515685

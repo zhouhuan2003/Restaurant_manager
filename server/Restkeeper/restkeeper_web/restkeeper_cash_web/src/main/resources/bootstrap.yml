@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: cash-web
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.150.135:8848
+        ip: 192.168.1.3
+      config:
+        server-addr: 192.168.150.135:8848
+        file-extension: yml
+        sharedDataids: common.yml
+        refreshable-dataids: common.yml
+server:
+  port: 8082
