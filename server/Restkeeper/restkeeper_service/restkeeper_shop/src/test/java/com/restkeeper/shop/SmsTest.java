@@ -69,8 +69,8 @@ public class SmsTest {
         //设置相关参数
         DefaultProfile profile = DefaultProfile.
                 getProfile("default",
-                        "LTAI5tQk94WTwi1zYpyuNEmG",
-                        "vCCwAaw1xtIhjEEZUD6oxGdzQFzL6O");
+                        "",
+                        "");
         IAcsClient client = new DefaultAcsClient(profile);
         CommonRequest request = new CommonRequest();
         request.setProtocol(ProtocolType.HTTPS);
